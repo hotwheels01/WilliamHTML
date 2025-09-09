@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Exercício-2</title>
+	<style>
+		 body {
+			background-color: darkcyan;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		min-height: 100vh;
+		margin: 0;
+
+		}
+		.img1 {
+			width: 300px;
+		}
+		.titulo {
+			color: purple;
+			text-align: center;
+			font-size: 70px;
+		}
+		.letras {
+			color: ghostwhite;
+			text-align: center;
+			font-size: 35px;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="titulo">Secret Number</h1>
+	<p class="letras">insira seu palpite abaixo:</p>
+	<input type="Number" placeholder="TENTE A SORTE">
+	<button onclick="jogo() ">🔮</button>
+	<p class="letras" id="msg1"></p>
+	<img class="img1" id="img1">
+	<div></div>
+	
+	<script>
+		let numberSec = Math.floor(Math.random() * 10) +1;
+        console.log(numberSec);
+
+        let palpite;
+        let tentativa = 0;
+        let maxTentativa = 5;
+
+    function jogo() {
+
+        
+        palpite = document.getElementById("ipt").value;
+
+        tentativa++;
+
+        if(tentativa <= maxTentativa) {
+        	if(palpite == numberSec) {
+        	    document.getElementById("msg1").innerText = "Acertou com " + tentativa + " tentativa(s)."
+        	    document.getElementById("img1").src = "https://conteudo.imguol.com.br/c/entretenimento/1a/2018/02/01/o-personagem-goku-da-animacao-dragon-ball-1517521178505_v2_4x3.jpg";
+        	} else if(palpite > numberSec) {
+        		document.getElementById("msg1").innerText = "O número secreto é MENOR!!";
+        		document.getElementById("img1").src = "https://a.storyblok.com/f/178900/1504x846/6567598344/8ec4643b37f07c7fb2e64ae33b0434dc1682605733_main.jpg/m/filters:quality(95)format(webp)"
+        	} else if (tentativa == maxTentativa) {
+        		document.getElementById("msg1").innerText = "GAME OVER";
+        		document.getElementById("img1").src = "https://media.istockphoto.com/id/1325433246/video/game-over-text-animation-with-alpha-channel-4k.jpg?s=640x640&k=20&c=aZM_cNmjuXVVkLm12evzXTU0qFhAu3Vh2_2W_h-eq3c="
+            } else {
+        		document.getElementById("msg1").innerText = "O número secreto é MAIOR!!";
+        		document.getElementById("img1").src = "https://cupulatrovao.com.br/wp-content/uploads/2020/03/Ascendance-of-a-Bookworm-protagonista-apontando-para-o-c%C3%A9u.jpg";
+        	}
+        }
+    }
+	</script>
+</body>
+</html>
